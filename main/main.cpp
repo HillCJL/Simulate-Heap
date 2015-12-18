@@ -11,24 +11,24 @@ int read(long long *heap, int point);
 void PrintValue(long long *heap, const int head);
 void PrintAddress(long long *heap, int head);
 
-/*ËùÓĞÊäÈëÇë±£Ö¤ºÏ·¨£¡*/
+/*æ‰€æœ‰è¾“å…¥è¯·ä¿è¯åˆæ³•ï¼*/
 
 int main() {
     long long a[1000];
     int testcase, ordernumber, input;
     int head, end, temp, temp2, NumberOfLink = 0;
     int i, counter;
-    for ( i = 0; i < 1000; i++ ) {                                  /*³õÊ¼»¯Êı×é×÷Îª¶Ñ*/
+    for ( i = 0; i < 1000; i++ ) {                                  /*åˆå§‹åŒ–æ•°ç»„ä½œä¸ºå †*/
         *(a + i) = 0;
     }
-    /*¶ÁÈëĞèÒªÊäÈë¶àÉÙ¸öÊı¾İ*/
+    /*è¯»å…¥éœ€è¦è¾“å…¥å¤šå°‘ä¸ªæ•°æ®*/
     printf("How many number would you want to input:");
     scanf("%d", &testcase);
     temp = malloc(a, 1000);
-    /*¶ÁÈëÊı¾İ*/
+    /*è¯»å…¥æ•°æ®*/
     for ( i = 0; i < testcase; i++ ) {
         scanf("%d", &input);
-        write(a, temp, input);                                      /*½«Êı¾İĞ´Èëµ±Ç°Î»ÖÃ*/
+        write(a, temp, input);                                      /*å°†æ•°æ®å†™å…¥å½“å‰ä½ç½®*/
         NumberOfLink++;
         if ( i == 0 ) {
             head = temp;
@@ -48,7 +48,7 @@ int main() {
     PrintValue(a, head);
     printf("\n");
 
-    /*É¾³ı½Úµã*/
+    /*åˆ é™¤èŠ‚ç‚¹*/
     printf("How many value would you want to delete?");
     scanf("%d", &testcase);
     printf("\n");
@@ -56,7 +56,7 @@ int main() {
         printf("Which value would you want to delete?Please enter the position:");
         scanf("%d", &ordernumber);
         printf("\n");
-        if ( ordernumber == 1 ) {                                             /*É¾³ıÍ·ÔªËØ*/
+        if ( ordernumber == 1 ) {                                             /*åˆ é™¤å¤´å…ƒç´ */
             printf("You want to delete the head of the link.\n");
             temp = head;
             head = getPoint(a[head]);
@@ -65,7 +65,7 @@ int main() {
         }
         else {
             if ( ordernumber == NumberOfLink ) {
-                printf("You want to delete the end of the link.\n");    /*É¾³ıÎ²ÔªËØ*/
+                printf("You want to delete the end of the link.\n");    /*åˆ é™¤å°¾å…ƒç´ */
                 counter = NumberOfLink - 1;
                 temp = head;
                 while ( --counter ) {
@@ -78,7 +78,7 @@ int main() {
                 NumberOfLink--;
             }
             else {
-                printf("You want to delete the middle of the link.\n"); /*É¾³ıÖĞ¼ä½Úµã*/
+                printf("You want to delete the middle of the link.\n"); /*åˆ é™¤ä¸­é—´èŠ‚ç‚¹*/
                 temp = head;
                 counter = ordernumber - 1;
                 while ( --counter ) {
@@ -95,7 +95,7 @@ int main() {
         printf("\n");
     }
     
-    /*ÔöÌí½Úµã*/
+    /*å¢æ·»èŠ‚ç‚¹*/
     printf("How many value would you want to add?");
     scanf("%d", &testcase);
     printf("\n");
@@ -152,29 +152,29 @@ int main() {
 }
 
 /*
-¸Ãº¯ÊıÓÃÒÔ²éÕÒ²¢·ÖÅä¿ÕÓà¿Õ¼ä
-ºÍÕæÕıµÄmallocº¯Êı²»Í¬µÄÊÇ£¬ÕâÀï´«µİ¹ıÀ´µÄ²»ÊÇĞèÒªÑ°Ö·¿Õ¼äµÄ´óĞ¡£¬¶øÊÇcÎÄ¼şÖĞÊı×éµÄÍ·Ö¸ÕëºÍÊı×é´óĞ¡
+è¯¥å‡½æ•°ç”¨ä»¥æŸ¥æ‰¾å¹¶åˆ†é…ç©ºä½™ç©ºé—´
+å’ŒçœŸæ­£çš„mallocå‡½æ•°ä¸åŒçš„æ˜¯ï¼Œè¿™é‡Œä¼ é€’è¿‡æ¥çš„ä¸æ˜¯éœ€è¦å¯»å€ç©ºé—´çš„å¤§å°ï¼Œè€Œæ˜¯cæ–‡ä»¶ä¸­æ•°ç»„çš„å¤´æŒ‡é’ˆå’Œæ•°ç»„å¤§å°
 */
 int malloc(long long *heap, int size) {
     int i;
-    for ( i = 0; i < size; i++ ) {          /*±éÀúÑ°ÕÒ¿ÕÏĞ¿Õ¼ä*/
-        if ( !(*(heap + i) & Flag) ) {      /*°´Î»ÓëÅĞ¶ÏµÚ32Î»ÊÇ·ñÎª1*/
-            *(heap + i) |= Flag;            /*°´Î»»ò½«µÚ32Î»±ä³É1*/
-            return i;                       /*·µ»ØµØÖ·*/
+    for ( i = 0; i < size; i++ ) {          /*éå†å¯»æ‰¾ç©ºé—²ç©ºé—´*/
+        if ( !(*(heap + i) & Flag) ) {      /*æŒ‰ä½ä¸åˆ¤æ–­ç¬¬32ä½æ˜¯å¦ä¸º1*/
+            *(heap + i) |= Flag;            /*æŒ‰ä½æˆ–å°†ç¬¬32ä½å˜æˆ1*/
+            return i;                       /*è¿”å›åœ°å€*/
         }
     }
-    return Flag - 1;                              /*Ñ°Ö·Ê§°Ü·µ»Ø2147483647*/
+    return Flag - 1;                              /*å¯»å€å¤±è´¥è¿”å›2147483647*/
 }
 
 /*
-¸Ãº¯Êı×÷ÓÃÎª½«Êı×éÖµValue×ªÎªµØÖ·
+è¯¥å‡½æ•°ä½œç”¨ä¸ºå°†æ•°ç»„å€¼Valueè½¬ä¸ºåœ°å€
 */
 int getPoint(long long value) {
     return value & (Flag - 1);
 }
 
 /*
-¸Ãº¯Êı×÷ÓÃÎª½«point±£´æµ½NumberÖĞ
+è¯¥å‡½æ•°ä½œç”¨ä¸ºå°†pointä¿å­˜åˆ°Numberä¸­
 */
 void putPoint(long long *Number, int point) {
     *Number &= ((long long)(-1)) << 31;
@@ -182,28 +182,29 @@ void putPoint(long long *Number, int point) {
 }
 
 /*
-¸Ãº¯Êı×÷ÓÃÎª½«µØÖ·ÎªpointµÄÊı×éÊÍ·Å£¬±ãÓÚÔÙ´ÎÊ¹ÓÃ
+è¯¥å‡½æ•°ä½œç”¨ä¸ºå°†åœ°å€ä¸ºpointçš„æ•°ç»„é‡Šæ”¾ï¼Œä¾¿äºå†æ¬¡ä½¿ç”¨
 */
 void free(long long *heap, int point) {
     *(heap + point) = 0;
 }
 
 /*
-¸Ãº¯Êı×÷ÓÃÎª½«Êı¾İNumberToStoreĞ´ÈëµØÖ·ÎªpointµÄÊı×éÔªËØÖĞ´¢´æ
+è¯¥å‡½æ•°ä½œç”¨ä¸ºå°†æ•°æ®NumberToStoreå†™å…¥åœ°å€ä¸ºpointçš„æ•°ç»„å…ƒç´ ä¸­å‚¨å­˜
 */
 void write(long long *heap, int point, int NumberToStore) {
+    *(heap + point) &= (2 * Flag - 1);
     *(heap + point) |= (((long long)NumberToStore) << 32);
 }
 
 /*
-¸Ãº¯ÊıÓÃÀ´¶ÁÈ¡´¢´æÔÚpoint´¦µÄÊıÖµ
+è¯¥å‡½æ•°ç”¨æ¥è¯»å–å‚¨å­˜åœ¨pointå¤„çš„æ•°å€¼
 */
 int read(long long *heap, int point) {
     return (*(heap + point)) >> 32;
 }
 
 /*
-¸Ãº¯ÊıÓÃÓÚ±éÀúÁ´±íÊä³öÔªËØµÄÖµ
+è¯¥å‡½æ•°ç”¨äºéå†é“¾è¡¨è¾“å‡ºå…ƒç´ çš„å€¼
 */
 void PrintValue(long long *heap, int head) {
     while ( head != Flag - 1 ) {
@@ -214,7 +215,7 @@ void PrintValue(long long *heap, int head) {
 }
 
 /*
-¸Ãº¯ÊıÓÃÓÚ±éÀúÁ´±íÊä³öÔªËØµØÖ·
+è¯¥å‡½æ•°ç”¨äºéå†é“¾è¡¨è¾“å‡ºå…ƒç´ åœ°å€
 */
 void PrintAddress(long long *heap, int head) {
     while ( head != Flag - 1 ) {
